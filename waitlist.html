@@ -3,238 +3,321 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Join the Waitlist | RentEase9ja</title>
+    <title>Join Waitlist | RentEase 9ja</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Syne:wght@700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    
     <style>
-        /* Mobile adjustments for the new footer legal links */
-        @media (max-width: 768px) {
-            .footer-bottom-content {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 10px;
-            }
-            .legal-links {
-                display: flex;
-                gap: 15px;
-            }
-            .desktop-divider {
-                display: none;
-            }
-        }
-        @media (min-width: 769px) {
-            .footer-bottom-content {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-wrap: wrap;
-            }
+        :root {
+            --primary-green: #2E9E5B;
+            --brand-blue: #1A5FBF;
+            --buy-orange: #F4791E;
+            --border: rgba(0,0,0,0.08);
+            --navy: #0D1F3C;
         }
 
-        /* --- Specific Styles for the Waitlist Section --- */
-        .waitlist-section {
-            flex: 1;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'DM Sans', sans-serif; background: #fff; color: #333; }
+
+        /* --- FIXED HEADER STYLES --- */
+        header {
+            position: sticky;
+            top: 0;
+            background: #fff;
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+        .navbar {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            padding: 80px 5%;
-            background-color: #f9f9f9;
+            padding: 15px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-
-        .waitlist-container {
-            background-color: #fff;
-            padding: 50px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            max-width: 650px;
-            width: 100%;
-            text-align: center;
-            border-top: 5px solid var(--brand-blue);
+        .logo-img { height: 65px; } 
+        
+        #nav-menu ul {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            list-style: none;
         }
-
-        .waitlist-container h1 {
-            color: var(--brand-blue);
-            font-size: 2.2rem;
-            margin-bottom: 15px;
-            font-weight: 700;
-            line-height: 1.2;
+        #nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            font-size: 15px;
+            transition: 0.3s;
         }
+        #nav-menu a:hover { color: var(--primary-green); }
+        .download-nav-btn {
+            background: var(--primary-green) !important;
+            color: #fff !important;
+            padding: 12px 24px;
+            border-radius: 8px;
+        }
+        .hamburger { display: none; font-size: 24px; cursor: pointer; color: #333; }
 
-        .waitlist-container p {
-            color: #555;
-            font-size: 1.05rem;
-            margin-bottom: 35px;
+        /* --- WAITLIST HERO (DARK MODE UPDATE) --- */
+        .hero-section-wrapper {
+            background-color: var(--navy);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .waitlist-hero {
+            padding: 80px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .hero-content h1 { 
+            font-family: 'Syne', sans-serif; 
+            font-size: clamp(32px, 4vw, 52px); 
+            line-height: 1.1; 
+            margin-bottom: 20px; 
+            color: #fff; 
+        }
+        .hero-content p {
+            color: rgba(255,255,255,0.8);
+            font-size: 16px;
             line-height: 1.6;
         }
-
-        .waitlist-form {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+        .hero-content .launch-badge { 
+            display: inline-block; 
+            background: rgba(244,121,30,.15); 
+            border: 1px solid var(--buy-orange); 
+            color: var(--buy-orange); 
+            padding: 5px 15px; 
+            border-radius: 50px; 
+            font-size: 12px; 
+            font-weight: 700; 
+            margin-bottom: 20px; 
+            text-transform: uppercase; 
         }
 
-        .input-wrapper {
-            display: flex;
-            gap: 15px;
+        .form-card {
+            background: #fff;
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+            border: 1px solid rgba(255,255,255,0.1);
         }
+        .form-group { margin-bottom: 15px; text-align: left; }
+        label { display: block; font-size: 11px; font-weight: 700; text-transform: uppercase; color: #888; margin-bottom: 8px; letter-spacing: 0.5px; }
+        input, select { width: 100%; padding: 14px; border: 1px solid var(--border); border-radius: 12px; font-size: 14px; background: #f9f9f9; outline: none; }
+        .submit-btn { width: 100%; padding: 18px; background: linear-gradient(135deg, var(--brand-blue), var(--primary-green)); color: #fff; border: none; border-radius: 12px; font-family: 'Syne', sans-serif; font-weight: 800; cursor: pointer; font-size: 16px; transition: 0.3s;}
+        .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(46,158,91,0.3); }
 
-        .waitlist-form input {
-            flex: 1;
-            padding: 15px 20px;
-            border: 2px solid #eee;
-            border-radius: 10px;
-            font-size: 1rem;
-            font-family: 'Inter', sans-serif;
-            outline: none;
-            transition: all 0.3s ease;
-            width: 100%;
+        /* --- CONTENT SECTIONS --- */
+        .section-header { text-align: center; margin: 80px auto 40px; max-width: 800px; padding: 0 20px; }
+        .section-header h2 { font-family: 'Syne', sans-serif; font-size: 36px; margin-bottom: 15px; color: var(--navy); }
+        .section-header p { color: #666; font-size: 16px; }
+        
+        .grid-section { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1100px; margin: 0 auto 80px; padding: 0 20px; }
+        
+        .feature-card { background: #fff; padding: 40px 24px; border-radius: 24px; border: 1px solid var(--border); text-align: center; transition: 0.3s; }
+        .feature-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .feature-card i { font-size: 40px; color: var(--primary-green); margin-bottom: 20px; display: block; }
+        .feature-card h3 { font-family: 'Syne', sans-serif; margin-bottom: 10px; color: var(--navy); }
+        .feature-card p { color: #666; font-size: 14px; line-height: 1.5; }
+        
+        .role-card { padding: 40px 24px; border-radius: 24px; border: 1px solid; text-align: center; transition: 0.3s; }
+        .role-card:hover { transform: translateY(-5px); }
+        .role-card.tenant { background: rgba(26,95,191,.03); border-color: rgba(26,95,191,.1); }
+        .role-card.landlord { background: rgba(46,158,91,.03); border-color: rgba(46,158,91,.1); }
+        .role-card.agent { background: rgba(244,121,30,.03); border-color: rgba(244,121,30,.1); }
+        .role-card h4 { font-family: 'Syne', sans-serif; font-size: 20px; margin-bottom: 10px; color: var(--navy); }
+        .role-card p { color: #666; font-size: 14px; line-height: 1.5; }
+
+        .bottom-cta { background: var(--navy); color: #fff; padding: 80px 40px; border-radius: 32px; text-align: center; max-width: 1100px; margin: 0 auto 80px; }
+        .bottom-cta h2 { font-family: 'Syne', sans-serif; font-size: 36px; margin-bottom: 20px; }
+        .bottom-cta p { font-size: 16px; color: rgba(255,255,255,0.8); margin-bottom: 30px; }
+
+        /* --- FIXED FOOTER STYLES --- */
+        footer { background: var(--navy); padding: 60px 5% 30px; color: #fff; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto 40px; }
+        
+        .footer-logo { height: 65px; margin-bottom: 15px; } 
+        
+        .footer-col h3 { font-family: 'Syne', sans-serif; font-size: 18px; margin-bottom: 20px; }
+        .footer-col p { color: #aaa; font-size: 14px; line-height: 1.6; margin-bottom: 15px; }
+        .brand-text { color: var(--primary-green); }
+        .social-links { display: flex; gap: 15px; }
+        .social-links a { color: #fff; font-size: 18px; background: rgba(255,255,255,0.1); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: 0.3s; text-decoration: none; }
+        .social-links a:hover { background: var(--primary-green); }
+        
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 25px; }
+        
+        .footer-bottom-content { 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            flex-direction: row; 
+            color: #aaa; 
+            font-size: 13px; 
         }
+        .legal-links { display: flex; align-items: center; gap: 10px; }
+        .legal-links a { color: #aaa; text-decoration: none; transition: 0.3s; }
+        .legal-links a:hover { color: #fff; }
 
-        .waitlist-form input:focus {
-            border-color: var(--buy-orange);
-            box-shadow: 0 0 0 3px rgba(255, 87, 34, 0.1);
-        }
-
-        .btn-submit {
-            background-color: var(--brand-blue);
-            color: #fff;
-            border: none;
-            padding: 15px 35px;
-            font-size: 1rem;
-            font-weight: 700;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-        }
-
-        .btn-submit:hover {
-            background-color: var(--buy-orange);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(255, 87, 34, 0.3);
-        }
-
-        .features {
-            margin-top: 40px;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .feature {
-            font-size: 0.9rem;
-            color: #444;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 600;
-            background: #f4f7f6;
-            padding: 8px 16px;
-            border-radius: 20px;
-        }
-
-        /* Waitlist Mobile Adjustments */
+        /* --- MOBILE RESPONSIVENESS --- */
         @media (max-width: 768px) {
-            .waitlist-section { padding: 50px 15px; }
-            .waitlist-container { padding: 40px 20px; }
-            .waitlist-container h1 { font-size: 1.8rem; }
-            .input-wrapper { flex-direction: column; gap: 20px; }
-            .btn-submit { width: 100%; }
-            .features { flex-direction: column; align-items: stretch; }
-            .feature { justify-content: center; }
+            .waitlist-hero, .grid-section { grid-template-columns: 1fr; }
+            .hero-content { text-align: center; }
+            #nav-menu { display: none; position: absolute; top: 96px; left: 0; width: 100%; background: #fff; padding: 20px; box-shadow: 0 10px 10px rgba(0,0,0,0.1); }
+            #nav-menu.active { display: block; }
+            #nav-menu ul { flex-direction: column; align-items: flex-start; gap: 20px; }
+            .hamburger { display: block; }
+            
+            .footer-bottom-content { flex-direction: column; gap: 10px; }
+            .desktop-divider { display: none; }
         }
     </style>
 </head>
-<body>
+<body id="top">
 
-    <div class="content-wrapper">
-        
-        <header>
-            <div class="navbar">
-                <div class="logo-area">
-                    <a href="/">
-                        <img src="logo.png" alt="RentEase9ja Logo" class="logo-img">
-                    </a>
-                </div>
-
-                <div class="hamburger" id="hamburger">
-                    <i class="fas fa-bars"></i>
-                </div>
-
-                <nav id="nav-menu">
-                    <ul>
-                        <li><a href="/">Marketplace</a></li>
-                        <li><a href="/buy">Buy House</a></li>
-                        <li><a href="/rent">Rent House</a></li>
-                        <li><a href="/land">Buy Land</a></li>
-                        <li><a href="/aboutus">About Us</a></li>
-                        <li><a href="/waitlist" class="download-nav-btn">Join Waitlist</a></li>
-                    </ul>
-                </nav>
+    <header>
+        <div class="navbar">
+            <div class="logo-area">
+                <a href="/"><img src="logo.png" alt="RentEase 9ja Logo" class="logo-img"></a>
             </div>
-        </header>
+            <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+            <nav id="nav-menu">
+                <ul>
+                    <li><a href="/">Marketplace</a></li>
+                    <li><a href="/buy">Buy House</a></li>
+                    <li><a href="/rent">Rent House</a></li>
+                    <li><a href="/land">Buy Land</a></li>
+                    <li><a href="/aboutus">About Us</a></li>
+                    <li><a href="/waitlist" class="download-nav-btn">Join Waitlist</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-        <section class="waitlist-section">
-            <div class="waitlist-container">
-                <h1>The Rental Game is Changing</h1>
-                <p>Join Nigeria's safest and most trusted platform to Buy, Rent, and Sell properties. Enjoy monthly payments for any property type with zero hidden charges.</p>
-                
-                <form class="waitlist-form" action="#" method="POST">
-                    <input type="text" name="name" placeholder="Enter your full name" required>
-                    
-                    <div class="input-wrapper">
-                        <input type="email" name="email" placeholder="Enter your email address" required>
-                        <button type="submit" class="btn-submit">Notify Me</button>
-                    </div>
-                </form>
-
-                <div class="features">
-                    <div class="feature"><i class="fas fa-check-circle" style="color: var(--buy-orange);"></i> Get Early Access</div>
-                    <div class="feature"><i class="fas fa-check-circle" style="color: var(--buy-orange);"></i> Zero Agency Fees</div>
-                    <div class="feature"><i class="fas fa-check-circle" style="color: var(--buy-orange);"></i> Verified Properties</div>
+    <main>
+        <div class="hero-section-wrapper">
+            <section class="waitlist-hero">
+                <div class="hero-content">
+                    <div class="launch-badge">Launching Soon</div>
+                    <h1>RentEase 9ja — Nigeria's first <span style="color: var(--primary-green);">digital property</span> platform.</h1>
+                    <p>We are building the most transparent and secure rental platform. No hidden fees, no stress, just peace of mind.</p>
                 </div>
+
+                <div class="form-card">
+                    <form action="https://formspree.io/f/xvgzlowy" method="POST">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" name="name" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" name="email" placeholder="you@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>I am a...</label>
+                            <select name="role" required>
+                                <option value="" disabled selected>Select your role</option>
+                                <option value="Tenant">Tenant looking for a home</option>
+                                <option value="Landlord">Landlord with property</option>
+                                <option value="Agent">Certified Agent</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="submit-btn">Secure My Spot</button>
+                    </form>
+                </div>
+            </section>
+        </div>
+
+        <div class="section-header">
+            <h2>Why RentEase 9ja?</h2>
+            <p>The truth: Landlords and Tenants deserve better than the current stress.</p>
+        </div>
+        <div class="grid-section">
+            <div class="feature-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3 style="font-family:'Syne';">0% Hidden Fees</h3>
+                <p>What you see is what you pay. No extra "settlements" or "agreement" drama.</p>
             </div>
+            <div class="feature-card">
+                <i class="fas fa-file-contract"></i>
+                <h3 style="font-family:'Syne';">Legal Protection</h3>
+                <p>Legally binding agreements and digital receipts for every transaction made.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-check-circle"></i>
+                <h3 style="font-family:'Syne';">Verified Property</h3>
+                <p>Every single property on our platform is physically verified to prevent fraud.</p>
+            </div>
+        </div>
+
+        <div class="section-header">
+            <h2>Designed for Everyone</h2>
+        </div>
+        <div class="grid-section">
+            <div class="role-card tenant">
+                <span style="font-size: 40px; display: block; margin-bottom: 15px;">🏠</span>
+                <h4 style="font-family:'Syne';">For Tenants</h4>
+                <p>Rent apartments with absolute transparency. Pay only what is required.</p>
+            </div>
+            <div class="role-card landlord">
+                <span style="font-size: 40px; display: block; margin-bottom: 15px;">🔑</span>
+                <h4 style="font-family:'Syne';">For Landlords</h4>
+                <p>Connect with verified tenants and manage your property securely.</p>
+            </div>
+            <div class="role-card agent">
+                <span style="font-size: 40px; display: block; margin-bottom: 15px;">💼</span>
+                <h4 style="font-family:'Syne';">For Agents</h4>
+                <p>Build your professional reputation as a certified RentEase 9ja partner.</p>
+            </div>
+        </div>
+
+        <section class="bottom-cta">
+            <h2 style="font-family:'Syne';">Ready to Join the Revolution?</h2>
+            <p>Be among the first to experience Nigeria's most transparent rental platform.</p>
+            <a href="#top" class="submit-btn" style="text-decoration:none; display:inline-block; width:auto; padding:15px 40px;">Back to Top</a>
         </section>
-
-    </div>
+    </main>
 
     <footer>
         <div class="footer-grid">
             <div class="footer-col">
-                <img src="logo.png" alt="RentEase9ja" class="footer-logo">
+                <img src="logo.png" alt="RentEase 9ja" class="footer-logo">
                 <p>Simplifying Real Estate in Nigeria. Secure. Transparent. Easy.</p>
             </div>
             <div class="footer-col">
-                <h3>About <span class="brand-text">RentEase9ja</span></h3>
-                <p>We are a property technology company dedicated to bridging the trust gap in the Nigerian real estate market. Every listing is verified for your peace of mind.</p>
-                <a href="/aboutus" class="read-more-link" style="color: var(--brand-blue); text-decoration: none; font-weight: 600;">Read more →</a>
+                <h3>About <span class="brand-text">RentEase 9ja</span></h3>
+                <p>We are a property technology company dedicated to bridging the trust gap in the Nigerian market.</p>
+                <a href="/aboutus" style="color: var(--brand-blue); text-decoration: none; font-weight: 600;">Read more →</a>
             </div>
-            
             <div class="footer-col">
                 <h3>Follow Us</h3>
                 <div class="social-links">
-                    <a href="https://www.tiktok.com/@rentease9ja6" target="_blank"><i class="fab fa-tiktok"></i></a>
-                    <a href="https://www.instagram.com/rentease9ja" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://x.com/rentease9ja?s=21" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                    <a href="https://www.tiktok.com/@RentEase9ja6" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.instagram.com/RentEase9ja" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://x.com/RentEase9ja" target="_blank"><i class="fab fa-x-twitter"></i></a>
                 </div>
                 <h3 style="margin-top: 20px; font-size: 16px;">Download Our App</h3>
-                <div class="footer-app-badges" style="display: flex; gap: 10px; margin-top: 10px;">
-                    <a href="#" onclick="redirectToApp()"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store" style="height: 35px;"></a>
-                    <a href="#" onclick="redirectToApp()"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Play Store" style="height: 35px;"></a>
+                <div style="display: flex; gap: 10px; margin-top: 10px;">
+                    <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store" style="height: 35px;"></a>
+                    <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Play Store" style="height: 35px;"></a>
                 </div>
             </div>
         </div>
-        <div class="footer-bottom" style="text-align: center; padding-top: 30px; color: #666; font-size: 13px;">
+        
+        <div class="footer-bottom">
             <div class="footer-bottom-content">
-                <p style="margin: 0;">&copy; 2026 RentEase9ja Nigeria. All Rights Reserved.</p>
+                <p style="margin: 0;">&copy; 2026 RentEase 9ja Nigeria. All Rights Reserved.</p>
                 <span class="desktop-divider" style="margin: 0 15px;">|</span>
                 <div class="legal-links">
-                    <a href="/privacy" style="color: #888; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">Privacy Policy</a>
-                    <span style="margin: 0 10px; color: #555;">&bull;</span>
-                    <a href="/terms" style="color: #888; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">Terms of Service</a>
+                    <a href="/privacy">Privacy Policy</a>
+                    <span style="color: #555;">&bull;</span>
+                    <a href="/terms">Terms of Service</a>
                 </div>
             </div>
         </div>
@@ -243,15 +326,7 @@
     <script>
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('nav-menu');
-
-        hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
-
-        function redirectToApp() {
-            // Updated alert message to reflect the waitlist status
-            alert("The RentEase9ja App is launching soon! Please join our waitlist to be notified.");
-        }
+        hamburger.addEventListener('click', () => { navMenu.classList.toggle('active'); });
     </script>
 </body>
 </html>
