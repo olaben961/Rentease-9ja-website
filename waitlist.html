@@ -18,7 +18,7 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body { font-family: 'DM Sans', sans-serif; background: #fff; color: #333; }
+        body { font-family: 'DM Sans', sans-serif; background: #fff; color: #333; overflow-x: hidden; }
 
         /* --- FIXED HEADER STYLES --- */
         header {
@@ -35,8 +35,9 @@
             padding: 15px 2%;
             max-width: 1440px; 
             margin: 0 auto;
+            position: relative; /* For absolute positioning of mobile menu */
         }
-        .logo-img { height: 85px; } 
+        .logo-img { height: 85px; transition: 0.3s; } 
         
         #nav-menu ul {
             display: flex;
@@ -57,8 +58,9 @@
             color: #fff !important;
             padding: 12px 24px;
             border-radius: 8px;
+            display: inline-block;
         }
-        .hamburger { display: none; font-size: 24px; cursor: pointer; color: #333; }
+        .hamburger { display: none; font-size: 28px; cursor: pointer; color: var(--navy); transition: 0.3s; }
 
         /* --- WAITLIST HERO (DARK MODE UPDATE) --- */
         .hero-section-wrapper {
@@ -183,19 +185,43 @@
         .legal-links a:hover { color: #fff; }
 
         /* --- MOBILE RESPONSIVENESS --- */
+        @media (max-width: 900px) {
+            .waitlist-hero, .grid-section { grid-template-columns: 1fr; }
+            .hero-content { text-align: center; margin-bottom: 20px; }
+            .hero-content .launch-badge { margin: 0 auto 20px; }
+            .hero-content div[style*="display:flex"] { justify-content: center; }
+        }
+
         @media (max-width: 768px) {
             .navbar { padding: 15px 5%; }
-            .logo-img { height: 55px; } /* Slightly smaller on mobile to fit nicely */
-            .waitlist-hero, .grid-section { grid-template-columns: 1fr; }
-            .hero-content { text-align: center; margin-bottom: 30px; }
+            .logo-img { height: 45px; } /* Scaled down slightly to fit hamburger nicely */
+            
+            .waitlist-hero { padding: 50px 20px; gap: 40px; }
+            .form-card { padding: 25px; }
             .form-row { flex-direction: column; gap: 15px; }
             
-            #nav-menu { display: none; position: absolute; top: 85px; left: 0; width: 100%; background: #fff; padding: 20px; box-shadow: 0 10px 10px rgba(0,0,0,0.1); }
+            /* Enhanced Hamburger Menu for Mobile */
+            #nav-menu { 
+                display: none; 
+                position: absolute; 
+                top: 100%; 
+                left: 0; 
+                width: 100%; 
+                background: #fff; 
+                padding: 25px 20px; 
+                box-shadow: 0 15px 20px rgba(0,0,0,0.05); 
+                border-top: 1px solid var(--border);
+            }
             #nav-menu.active { display: block; }
-            #nav-menu ul { flex-direction: column; align-items: flex-start; gap: 20px; }
+            #nav-menu ul { flex-direction: column; align-items: center; gap: 25px; }
+            #nav-menu a { font-size: 18px; }
+            .download-nav-btn { width: 100%; text-align: center; }
             .hamburger { display: block; }
             
-            .footer-bottom-content { flex-direction: column; gap: 10px; }
+            .section-header { margin: 60px auto 30px; }
+            .bottom-cta { padding: 50px 20px; margin-bottom: 60px; }
+            
+            .footer-bottom-content { flex-direction: column; gap: 12px; text-align: center; }
             .desktop-divider { display: none; }
         }
     </style>
@@ -382,10 +408,23 @@
     </footer>
 
     <script>
-        // Mobile Menu Toggle
+        // Mobile Menu Toggle with Icon Change
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('nav-menu');
-        hamburger.addEventListener('click', () => { navMenu.classList.toggle('active'); });
+        const icon = hamburger.querySelector('i');
+
+        hamburger.addEventListener('click', () => { 
+            navMenu.classList.toggle('active'); 
+            
+            // Switch between hamburger bars and close 'X'
+            if(navMenu.classList.contains('active')){
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
 
         // Toggle 'Other' State Input Box
         function toggleOtherState() {
